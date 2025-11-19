@@ -1,0 +1,96 @@
+########################################
+# Global
+########################################
+# Logs
+*.log
+logs/
+*.tmp
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Java / Maven / Gradle
+########################################
+target/
+build/
+out/
+*.class
+*.jar
+*.war
+*.ear
+*.iml
+
+# Maven
+.mvn/wrapper/maven-wrapper.jar
+
+# Gradle
+.gradle/
+gradle-app.setting
+!gradle-wrapper.jar
+
+########################################
+# Spring Boot specific
+########################################
+# Application config (if containing secrets – optional)
+application-*.properties
+application-*.yml
+# Uncomment if you keep secrets locally
+# src/main/resources/application.properties
+# src/main/resources/application.yml
+
+# Temp folders
+spring.log
+*.pid
+*.gz
+
+########################################
+# Angular / Node (frontend)
+########################################
+frontend/node_modules/
+frontend/dist/
+frontend/.angular/cache/
+frontend/.angular/
+frontend/.vs/
+
+# If frontend contains multiple projects, ignore root-level node modules too
+node_modules/
+dist/
+.tmp/
+*.tsbuildinfo
+
+# Angular environment files (optional)
+# Uncomment if you store secrets locally
+# frontend/src/environments/environment.ts
+# frontend/src/environments/environment.prod.ts
+
+########################################
+# IDEs
+########################################
+# IntelliJ / JetBrains
+.idea/
+*.iws
+*.ipr
+*.ids
+*.iml
+
+# VS Code
+.vscode/
+.history/
+*.code-workspace
+
+########################################
+# Backend folder structure
+########################################
+backend/*/target/
+backend/*/build/
+backend/*/.classpath
+backend/*/.project
+backend/*/.settings/
+
+########################################
+# Others
+########################################
+*.swp
+*.swo
+*.bak
