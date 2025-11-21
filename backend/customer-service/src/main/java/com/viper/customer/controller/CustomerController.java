@@ -34,7 +34,7 @@ public class CustomerController {
 		
 		ApiResponse<List<Customer>> response = new ApiResponse<>(
 				ResponseStatus.SUCCESS,
-				"Customers fetched successfully",
+				"All customers fetched successfully",
 				list
 				);
 		
@@ -82,7 +82,7 @@ public class CustomerController {
 	
 	@PutMapping("/{id}")
 	public ResponseEntity<ApiResponse<Customer>> updateCustomer(@PathVariable long id, @RequestBody Customer customer){
-		customer = customerService.updateCustomer(customer);
+		customer = customerService.updateCustomer(id, customer);
 		
 		ApiResponse<Customer> response = new ApiResponse<>(
 				ResponseStatus.SUCCESS,

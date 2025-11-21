@@ -1,6 +1,5 @@
 package com.viper.customer.service;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -36,10 +35,18 @@ public class CustomerService {
 		return customerRepo.saveAll(custList);
 	}
 
-	public Customer updateCustomer(Customer customer) {
-		return customerRepo.save(customer);
+	public Customer updateCustomer(long id, Customer customer) {
+		Customer existing = getCustomer(id);
+		
+		existing.setFirstName(customer.getFirstName());
+		existing.setLastName(customer.getLastName());
+		existing.setEmail(customer.getEmail());
+		existing.setMobile(customer.getMobile());
+		existing.setAddress(customer.getAddress());
+		
+		return customerRepo.save(existing);
 	}
-
+	
 	public void deleteCustomer(long id) {
 		customerRepo.deleteById(id);
 	}
