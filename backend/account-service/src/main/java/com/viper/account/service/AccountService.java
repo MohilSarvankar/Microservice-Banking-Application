@@ -4,8 +4,12 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.viper.account.client.CustomerClient;
+import com.viper.account.enums.ResponseStatus;
 import com.viper.account.exception.ResourceNotFoundException;
 import com.viper.account.model.Account;
+import com.viper.account.model.ApiResponse;
+import com.viper.account.model.CustomerDto;
 import com.viper.account.repo.AccountRepo;
 
 import jakarta.transaction.Transactional;
@@ -14,16 +18,20 @@ import jakarta.transaction.Transactional;
 public class AccountService {
 	
 	private AccountRepo accountRepo;
+	private CustomerClient customerClient;
 	
-	public AccountService(AccountRepo accountRepo) {
+	public AccountService(AccountRepo accountRepo, CustomerClient customerClient) {
 		this.accountRepo = accountRepo;
+		this.customerClient = customerClient;
 	}
 
 	public Account addAccount(Account account) {
+		validateCustomer(account);
 		return accountRepo.save(account);
 	}
 	
 	public List<Account> addAllAccount(List<Account> accountList) {
+		accountList.forEach(account -> validateCustomer(account));
 		return accountRepo.saveAll(accountList);
 	}
 
@@ -38,6 +46,7 @@ public class AccountService {
 	}
 
 	public Account updateAccount(String accountNo, Account account) {
+		validateCustomer(account);
 		Account existing = getAccount(accountNo);
 		
 		existing.setCustomerId(account.getCustomerId());
@@ -53,6 +62,9 @@ public class AccountService {
 		accountRepo.deleteByAccountNo(accountNo);
 	}
 	
-	
-
+	private void validateCustomer(Account account) {
+		ApiResponse<CustomerDto> response = customerClient.getCustomer(account.getCustomerId()).getBody();
+		if(response.getStatus() == ResponseStatus.ERROR)
+			throw new ResourceNotFoundException("Customer not found");
+	}
 }
