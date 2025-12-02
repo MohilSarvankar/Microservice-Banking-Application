@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.viper.customer.exception.ResourceNotFoundException;
+import com.viper.common.exception.ResourceNotFoundException;
 import com.viper.customer.model.Customer;
 import com.viper.customer.repo.CustomerRepo;
 

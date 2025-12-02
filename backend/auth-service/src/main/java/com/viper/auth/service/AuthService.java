@@ -3,9 +3,9 @@ package com.viper.auth.service;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.viper.auth.exception.ResourceNotFoundException;
 import com.viper.auth.model.User;
 import com.viper.auth.repo.AuthRepo;
+import com.viper.common.exception.ResourceNotFoundException;
 
 @Service
 public class AuthService {

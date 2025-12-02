@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.viper.customer.enums.ResponseStatus;
-import com.viper.customer.model.ApiResponse;
+import com.viper.common.dto.ApiResponse;
+import com.viper.common.enums.ResponseStatus;
 import com.viper.customer.model.Customer;
 import com.viper.customer.service.CustomerService;
 

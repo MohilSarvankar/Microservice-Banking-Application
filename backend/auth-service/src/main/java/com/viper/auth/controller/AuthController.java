@@ -9,10 +9,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.viper.auth.enums.ResponseStatus;
-import com.viper.auth.model.ApiResponse;
 import com.viper.auth.model.User;
 import com.viper.auth.service.AuthService;
+import com.viper.common.dto.ApiResponse;
+import com.viper.common.enums.ResponseStatus;
 
 @RestController
 @RequestMapping("/auth")

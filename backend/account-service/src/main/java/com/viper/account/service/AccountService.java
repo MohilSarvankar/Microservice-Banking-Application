@@ -5,12 +5,12 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.viper.account.client.CustomerClient;
-import com.viper.account.enums.ResponseStatus;
-import com.viper.account.exception.ResourceNotFoundException;
 import com.viper.account.model.Account;
-import com.viper.account.model.ApiResponse;
 import com.viper.account.model.CustomerDto;
 import com.viper.account.repo.AccountRepo;
+import com.viper.common.dto.ApiResponse;
+import com.viper.common.enums.ResponseStatus;
+import com.viper.common.exception.ResourceNotFoundException;
 
 import jakarta.transaction.Transactional;
 

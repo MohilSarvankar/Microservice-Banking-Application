@@ -3,14 +3,13 @@ package com.viper.gateway.filter;
 import org.springframework.cloud.gateway.filter.GatewayFilterChain;
 import org.springframework.cloud.gateway.filter.GlobalFilter;
 import org.springframework.core.Ordered;
-import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.client.WebClient;
 import org.springframework.web.server.ServerWebExchange;
 
-import com.viper.gateway.enums.ResponseStatus;
-import com.viper.gateway.model.ApiResponse;
+import com.viper.common.dto.ApiResponse;
+import com.viper.common.enums.ResponseStatus;
 
 import reactor.core.publisher.Mono;
 

@@ -81,6 +81,11 @@
 	      <artifactId>lombok</artifactId>
 	      <optional>true</optional>
 	    </dependency>
+	    <dependency>
+	      <groupId>com.viper</groupId>
+		  <artifactId>common-utils</artifactId>
+		  <version>1.0.0</version>
+	    </dependency>
 	</dependencies>
 	<dependencyManagement>
 		<dependencies>

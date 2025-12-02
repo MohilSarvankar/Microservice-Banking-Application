@@ -3,8 +3,8 @@ package com.viper.account.config;
 import java.nio.charset.StandardCharsets;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.viper.account.exception.ResourceNotFoundException;
-import com.viper.account.model.ApiResponse;
+import com.viper.common.dto.ApiResponse;
+import com.viper.common.exception.ResourceNotFoundException;
 
 import feign.Response;
 import feign.Util;

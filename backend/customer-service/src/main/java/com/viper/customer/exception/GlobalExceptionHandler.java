@@ -5,8 +5,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
-import com.viper.customer.enums.ResponseStatus;
-import com.viper.customer.model.ApiResponse;
+import com.viper.common.dto.ApiResponse;
+import com.viper.common.enums.ResponseStatus;
+import com.viper.common.exception.ResourceNotFoundException;
+
 
 @ControllerAdvice
 public class GlobalExceptionHandler {
