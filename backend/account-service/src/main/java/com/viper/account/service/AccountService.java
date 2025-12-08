@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import com.viper.account.client.CustomerClient;
 import com.viper.account.model.Account;
 import com.viper.account.model.CustomerDto;
+import com.viper.account.model.FundTransferRequestDto;
 import com.viper.account.repo.AccountRepo;
 import com.viper.common.dto.ApiResponse;
 import com.viper.common.enums.ResponseStatus;
@@ -67,4 +68,24 @@ public class AccountService {
 		if(response.getStatus() == ResponseStatus.ERROR)
 			throw new ResourceNotFoundException("Customer not found");
 	}
+	
+	@Transactional
+	public void transferFunds(FundTransferRequestDto request) {
+		Account fromAcc = accountRepo.findAccountForUpdate(request.getFromAccount())
+									 .orElseThrow(() -> new ResourceNotFoundException("Account not found: " + request.getFromAccount()));
+		
+		Account toAcc = accountRepo.findAccountForUpdate(request.getToAccount())
+				 .orElseThrow(() -> new ResourceNotFoundException("Account not found: " + request.getToAccount()));
+		
+		if(fromAcc.getBalance() < request.getAmount())
+			throw new RuntimeException("Insufficient funds");
+		
+		fromAcc.setBalance(fromAcc.getBalance() - request.getAmount());
+		toAcc.setBalance(toAcc.getBalance() + request.getAmount());
+		
+		accountRepo.save(fromAcc);
+		accountRepo.save(toAcc);
+	}
+
+	
 }

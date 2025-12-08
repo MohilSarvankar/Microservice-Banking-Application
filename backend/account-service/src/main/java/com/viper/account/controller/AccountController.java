@@ -11,9 +11,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.viper.account.model.Account;
+import com.viper.account.model.FundTransferRequestDto;
 import com.viper.account.service.AccountService;
 import com.viper.common.dto.ApiResponse;
 import com.viper.common.enums.ResponseStatus;
@@ -103,6 +105,19 @@ public class AccountController {
 				null
 			);
 	
+		return ResponseEntity.status(HttpStatus.OK).body(response);
+	}
+	
+	@PostMapping("/transfer")
+	public ResponseEntity<ApiResponse<Object>> transferFunds(@RequestBody FundTransferRequestDto request){
+		accountService.transferFunds(request);
+		
+		ApiResponse<Object> response = new ApiResponse<>(
+					ResponseStatus.SUCCESS,
+					"Transaction processed successfully",
+					null
+				);
+		
 		return ResponseEntity.status(HttpStatus.OK).body(response);
 	}
 }
