@@ -1,0 +1,35 @@
+package com.viper.transaction.exception;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.ControllerAdvice;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+
+import com.viper.common.dto.ApiResponse;
+import com.viper.common.enums.ResponseStatus;
+import com.viper.common.exception.ResourceNotFoundException;
+
+@ControllerAdvice
+public class GlobalExceptionHandler {
+	
+	@ExceptionHandler(Exception.class)
+	public ResponseEntity<ApiResponse<Object>> exceptionHandler(Exception e){
+		ApiResponse<Object> response = new ApiResponse<>(
+					ResponseStatus.ERROR,
+					e.getMessage(),
+					null
+				);
+		return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
+	}
+	
+	@ExceptionHandler(ResourceNotFoundException.class)
+	public ResponseEntity<ApiResponse<Object>> resourceNotFoundExceptionHandler(ResourceNotFoundException e){
+		ApiResponse<Object> response = new ApiResponse<>(
+					ResponseStatus.ERROR,
+					e.getMessage(),
+					null
+				);
+		
+		return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
+	}
+}
